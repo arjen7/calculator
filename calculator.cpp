@@ -75,16 +75,16 @@ QString calculator::eque(Tree* root){
             root->child[var]->key=QString::number(sqrt(root->child[var+1]->key.toDouble()));
             root->child.erase(root->child.begin()+var+1);
         }
-
-    }
-
-    for (unsigned int var = 0; var < root->child.size(); var++) {
         if(root->child[var]->key=="^"){
             root->child[var-1]->key=QString::number(pow(root->child[var-1]->key.toDouble(),root->child[var+1]->key.toDouble()));
             root->child.erase(root->child.begin()+var);
             root->child.erase(root->child.begin()+var);
             var--;
         }
+
+    }
+
+    for (unsigned int var = 0; var < root->child.size(); var++) {
 
         if(root->child[var]->key=="*"){
             root->child[var-1]->key=QString::number(root->child[var-1]->key.toDouble()*root->child[var+1]->key.toDouble());
